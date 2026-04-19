@@ -12,7 +12,9 @@ import java.util.List;
 public class StudentController {
     @Autowired
     StudentService studentService;
-
+      StudentController(StudentService studentService) {
+        this.studentService = studentService;
+      }
     @RequestMapping("/home")
     public List<Student> getStudents(){
         return studentService.getStudents();
