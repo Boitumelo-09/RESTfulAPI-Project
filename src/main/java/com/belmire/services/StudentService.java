@@ -20,4 +20,8 @@ public class StudentService {
             new Student(26, "Rajesh", "Male", 107),
             new Student(27, "MahaRaj", "Male", 108));
 
+    public Student getStudentByID(int studentID) {
+//      return students.stream().filter(s -> students.getStudent == studentID).getFirst().get();
+        return students.stream().filter(s -> s.getStudentId() == studentID).findFirst().get();
+    }
 }
