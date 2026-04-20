@@ -5,23 +5,30 @@ import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Getter
 @Service
 public class StudentService {
-    List<Student> students = Arrays.asList(new Student(20, "Rahul", "Male", 101),
+    List<Student> students =  new ArrayList<>(Arrays.asList(new Student(20, "Rahul", "Male", 101),
             new Student(21, "Raj", "Male", 102),
             new Student(22, "Ravi", "Male", 103),
             new Student(23, "Raju", "Male", 104),
             new Student(24, "Rajesh", "Male", 105),
             new Student(25, "Rajesh", "Male", 106),
             new Student(26, "Rajesh", "Male", 107),
-            new Student(27, "MahaRaj", "Male", 108));
+            new Student(27, "MahaRaj", "Male", 108)));
 
     public Student getStudentByID(int studentID) {
-//      return students.stream().filter(s -> students.getStudent == studentID).getFirst().get();
-        return students.stream().filter(s -> s.getStudentId() == studentID).findFirst().get();
+
+        return students.stream().filter(s -> s.getStudentId() == studentID)
+                .findFirst().orElse(new Student(0,"no name","other",0));
+    }
+
+
+    public void addStudent(Student student) {
+        students.add(student);
     }
 }

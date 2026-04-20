@@ -3,9 +3,7 @@ package com.belmire.controllers;
 import com.belmire.models.Student;
 import com.belmire.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,13 +14,17 @@ public class StudentController {
       StudentController(StudentService studentService) {
         this.studentService = studentService;
       }
-    @RequestMapping("/students")
+    @GetMapping("/students")
     public List<Student> getStudents(){
         return studentService.getStudents();
     }
 
-    @RequestMapping("/students/{studentID}")
+    @GetMapping("/students/{studentID}")
     public Student getStudent(@PathVariable int studentID){
           return studentService.getStudentByID(studentID);
+    }
+    @PostMapping("/student")
+    public void addStudent(@RequestBody Student student){
+          studentService.addStudent(student);
     }
 }
