@@ -31,4 +31,19 @@ public class StudentService {
     public void addStudent(Student student) {
         students.add(student);
     }
+
+    public void updateStudent(Student student) {
+        int index = 0;
+        for (var s : students) {
+            if (s.getStudentId() == student.getStudentId()) {
+                students.set(index, student);
+                break;
+            }
+            index++;
+        }
+    }
+    public void deleteStudentByID(int studentID){
+        students.removeIf(s -> s.getStudentId() == studentID);
+    }
+
 }
