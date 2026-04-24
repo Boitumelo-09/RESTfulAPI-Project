@@ -12,13 +12,16 @@ import java.util.List;
 
 @RestController
 public class StudentController {
-    @Autowired
-    StudentService studentService;
-    @Autowired
-    StudentRepository repository;
-      StudentController(StudentService studentService) {
+
+   private final StudentService studentService;
+   private  final StudentRepository repository;
+
+    StudentController(StudentService studentService, StudentRepository repository) {
         this.studentService = studentService;
-      }
+        this.repository = repository;
+    }
+
+
     @GetMapping("/students")
     public List<Student> getStudents(){
         return studentService.getStudents();
