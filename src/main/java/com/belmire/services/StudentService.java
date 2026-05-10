@@ -31,9 +31,7 @@ public class StudentService {
         repository.save(student);
     }
 
-    public void deleteStudentByID(int studentID) {
-        repository.deleteById(studentID);
-    }
+    public void deleteStudentByID(int byId) {repository.deleteById(byId);}
 
     public List<Student> getStudents() {
         return repository.findAll();
